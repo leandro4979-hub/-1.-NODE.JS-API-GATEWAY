@@ -1,0 +1,16 @@
+// server/index.js
+import express from "express";
+import { createTask } from "./routes/research.js";
+
+const app = express();
+app.use(express.json());
+
+// create research task
+app.post("/task", async (req, res) => {
+  const task = await createTask(req.body);
+  res.json(task);
+});
+
+app.listen(3000, () => {
+  console.log("AI Research Network running on :3000");
+});
